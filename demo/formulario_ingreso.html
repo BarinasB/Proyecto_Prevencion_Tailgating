@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Formularios I</title>
+<style>
+
+body{
+	background-color:rgb(234, 244, 245);
+}
+
+#principal{
+	
+	padding:10px 10px 10px 50px;
+	background-color:rgb(7, 46, 218);	
+	box-shadow: 10px 10px 5px 0px #999999;
+	border-radius: 10px;
+}
+
+td{
+	padding-bottom:25px;
+}
+h1{
+	text-align:center;
+}
+
+
+a {
+
+  text-align:center;
+  color: #fff;
+  font-size: medium;
+  left: 5px;
+  padding:10px 7px 7px 20px;
+	background-color:rgb(3, 3, 3);	
+	box-shadow: 10px 10px 5px 0px #999999;
+	border-radius: 3px;
+  
+}
+
+</style>
+<script src="jquery-3.6.0.min.js"></script>
+
+<script>
+
+	$(document).ready(function() {
+		
+	});
+</script>
+</head>
+
+<body>
+<h1>Formulario de ingreso</h1>
+
+
+<div id="contenedor">
+<form id="form_datos">
+  <table width="20%" border="0" align="center" id="principal">
+    <tr>
+      <td>Nombre:</td>
+      <td><label for="nombre"></label>
+        <input type="text" name="nombre" id="nombre" value="Obligatorio nombre"></td>
+    </tr>
+    <tr>
+      <td>Cedula:</td>
+      <td><input type="text" cedula="cedula" id="cedula"></td>
+    </tr>
+    <tr>
+      <td>cargo:</td>
+      <td><input type="text" name="Cargo" id="cargo"></td>
+    </tr>
+    <tr>
+      <td>celular:</td>
+      <td><input type="text" name="Celular" id="celular"></td>
+    </tr>
+    <tr>
+      <td>ID:</td>
+      <td><input type="text" name="ID" id="ID"></td>
+    </tr>
+    <tr>
+      <td>Género:</td>
+      <td><p>
+        <label>
+          <input type="radio" name="genero" value="Masculino" id="masculino">
+          masculino</label>
+        <br>
+        <label>
+          <input type="radio" name="genero" value="Femenino" id="femenino">
+          femenino</label>
+        <br>
+      </p></td>
+    </tr>
+    <tr>
+      <td><Area></Area>Area</td>
+      <td><label for="Area"></label>
+        <select name="Area" id="Area">
+          <option>administrativo</option>
+          <option>comercial</option>
+          <option>Contabilidad</option>
+          <option>recursosH</option>
+          <option>Opeario</option>
+          <option>Otro</option>
+        </select></td>
+    </tr>
+    <tr>
+      <td>horario:</td>
+      <td><table width="200">
+        <tr>
+          <td><label>
+            <input type="checkbox" name="mañana" value="mañana" id="mañana">
+            mañana</label></td>
+          <td><label>
+            <input type="checkbox" name="tarde" value="tarde" id="tarde">
+            tarde</label></td>
+        </tr>
+        <tr>
+          <td><label>
+            <input type="checkbox" name="noche" value="noche" id="noche">
+            noche</label></td>
+          <td><label>
+            <input type="checkbox" name="oficina" value="oficina" id="oficina">
+            oficina</label></td>
+        </tr>
+        
+       
+      </table></td>
+    </tr>
+    <tr>
+    <td colspan="2" align="center"><input type="button" value="Comprobar" id="comprobar"></td>
+
+    
+   
+    </tr>
+  </table>
+  </form>
+</div>
+<a href="index.html"> Regresar </a>
+</body>
+</html>

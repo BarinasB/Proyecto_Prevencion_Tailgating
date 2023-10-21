@@ -1,0 +1,313 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<title>Proyecto prevencion tailgating</title> 
+    
+    
+
+
+          <!-- Meta tags -->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Content-Style-Type" content="text/css" />  <!-- w3c recomends this meta tag  -->
+	<meta http-equiv="Content-Script-Type" content="text/javascript" />  <!-- w3c recomends this meta tag  -->
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<meta name="copyright" content="" />
+	<meta name="author" content="" />
+	<meta name="rating" content="general" />
+	<meta name="robots" content="all" />
+        <!-- Stylesheets -->
+	<link rel="stylesheet" href="css/style.css" type="text/css" media="screen, projection" />
+	    
+    <style> 
+    
+    #banner {
+    background-color: #c00; /* Cambiar a un rojo menos intenso */
+    width: 550px;
+    height: 300px;
+    position: absolute;
+    left: 50%; /* Centrar horizontalmente */
+    top: 50%; /* Centrar verticalmente */
+    transform: translate(-50%, -110%); /* Centrar tanto horizontal como verticalmente */
+    font-size: 36px;
+    text-align: center;
+    padding: 3px 10px;
+    border: rgb(13, 13, 14) 5px double;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    visibility: hidden;
+    } 
+
+    table {
+      
+    border-collapse: collapse;
+    font-size: 28px;
+    visibility: hidden;
+    text-align: center;
+    margin:0 auto;
+    
+    }
+ 
+    table,th,td {
+    border: 1px solid black;
+    text-align: center;
+    padding: 5px;
+    }
+ 
+    th {
+    padding: 5px;
+    color: #f00;
+    } 
+
+    td {
+
+      font-size: 20px;    
+    }
+    
+    </style>
+    
+    
+    
+    <!-- Javascripts -->
+    <script language="javascript" type="text/javascript" src="js/jquery.js"></script>
+    <script language="javascript" type="text/javascript" src="js/nav2.2.js"></script>
+    <script language="javascript" type="text/javascript">
+
+    		$(document).ready(function(){
+               
+                 
+               $(".u4").hide();
+
+				$("#JqueryMenu").navPlugin({
+                    'itemWidth': 143,
+					'itemHeight': 30,
+					'navEffect': 'fade',
+					'speed': 500
+
+                    });
+				$("#JqueryMenu2").navPlugin({
+					'itemWidth': 'auto',
+					'itemHeight': 30,
+					'navEffect': 'fade',
+					'speed': 500
+				}); 
+                
+                 fetch('https://jsonplaceholder.typicode.com/users')
+                 .then(response => response.json())
+                 .then(data => mostrarData(data) ); 
+   
+                 const mostrarData =(data ) =>{ 
+                 console.log(data) ;
+                 console.log(data[0].id);
+                   
+                 alerta = parseInt(data[0].id);    
+                 if (alerta == 1) {
+                    $("#banner").css('visibility', 'visible');
+                    $("#tablaA").css('visibility', 'visible'); 
+                    $("#empleado").html(data[0].name);
+                    $("#cedula").html(data[0].phone);
+                    $("#alerta").html(data[0].id);
+                    $("#empleado2").html(data[1].name);
+                    $("#cedula2").html(data[1].phone);
+                    $("#alerta2").html(data[1].id);
+                    $("#empleado3").html(data[2].name);
+                    $("#cedula3").html(data[2].phone);
+                    $("#alerta3").html(data[2].id);
+                 document.getElementById("cerrar").addEventListener("click",cerrar_banner,false);
+                 
+                 function cerrar_banner(){
+                 $("#banner").remove();
+                 } 
+                } // cierre del if alertas
+                 
+                $("#historialAlertas").click(function() {
+                 
+                 var r=1 
+                 $(".u4").show();
+                
+                 for (r=1;r<11;r++) {
+                  
+                    $("#empleado"+r).html(data[r].name);  
+                    $("#cedula"+r).html(data[r].phone); 
+                    $("#alerta"+r).html(data[r].id);
+                 } // cierre del FOR
+                }); // cierre de la funcion anonima de click en historial alertas
+
+                 
+                $("#salir").click(function() {  
+                    window.close();
+                    });  // cierre de la funcion anonima de click en salir
+
+                 } // cierre de la funcion mostrardata
+
+			});
+    </script>
+
+</head>
+
+<body> 
+
+    <div id="banner">
+      <p>  Alerta en la esclusa peatonal </p>
+      <br>
+      <br>
+     <p id="cerrar">Cerrar</p>     
+    </div>
+
+      <div id="wrap">
+      <div class="content">
+
+      	   <div id="dropdown">
+
+                <ul id="JqueryMenu">
+                    <li><a href="#">Activar</a>
+                        <ul>
+                            <li><a href="#"> tomar foto </a></li>
+                            <li><a href="#"> Detener </a></li>
+                            <li id="salir"><a>  Salir </a></li>
+                                   
+                        </ul></li>
+                    <li><a href="#"></a></li>
+                    <li id="formularioIn"><a href="formulario_ingreso.html">Añadir Usuarios</a></li>
+                    <li><a href="#"></a></li>
+                    <li><a href="formulario_eliminar.html">Eliminar Usuarios</a></li>
+                    
+                </ul>
+
+           </div>  <!-- final menu 1--> 
+
+
+           <div class=" fotos" > 
+
+            <img src="fotoesclusa.jpeg" height="300px" width="600px" id="imagen1"  >
+            
+
+           </div>
+           
+
+           
+           <div class="dropdown" style="clear:both;margin-top:1px">
+
+                <ul id="JqueryMenu2">
+                   
+                    <li><a href="#">____________</a>
+                    <li id="historialAlertas"><a>historial alertas</a> 
+                    <li><a href="#">____________</a>
+                    <li><a href="#">Codigo de alertas</a>
+                        <ul>
+                            <li><a href="#"> 0) ingreso sin ninguna alerta </a></li>
+                            <li><a href="#"> 1) presencia de 2 personas en la esclusa </a></li>
+                            <li><a href="#"> 2) mas de un ingreso al dia </a></li>
+                            <li><a href="#"> 3) mucho tiempo en la esclusa </a></li>
+                            <li><a href="#"> 4) ingreso en horario no asignado </a></li>
+                                   
+                        </ul></li>
+                    <li><a href="#">___________</a>
+                    
+                    
+                </ul>
+
+                 <div> 
+
+                    <table id="tablaA">
+                        <thead>
+                            <tr>
+                                <th>Empleado</th>
+                                <th>Cedula</th>
+                                <th>alerta</th>
+                                <th>fecha</th> 
+                                <th>Hora</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td id="empleado1">Carlos peña</td>
+                                <td id="cedula1">1021456789</td>
+                                <td id="alerta1">3</td>
+                                <td id="fecha1">8-10-22</td>
+                                <td id="hora1">4:10pm</td>
+                            </tr>
+                            <tr>
+                                <td id="empleado2">Carlos peña</td>
+                                <td id="cedula2">1021456789</td>
+                                <td id="alerta2">3</td>
+                                <td id="fecha2">8-10-22</td>
+                                <td id="hora2">4:10pm</td>
+                            </tr>
+                            <tr class="u4">
+                                <td id="empleado3">Carlos peña</td>
+                                <td id="cedula3">1021456789</td>
+                                <td id="alerta3">3</td>
+                                <td id="fecha3">8-10-22</td>
+                                <td id="hora3">4:10pm</td>
+                            </tr>
+                            <tr class="u4" >
+                                <td id="empleado4"></td>
+                                <td id="cedula4"></td>
+                                <td id="alerta4"></td>
+                                <td id="fecha4"></td>
+                                <td id="hora4"></td>
+                            </tr>
+                            <tr class="u4">
+                                <td id="empleado5"></td>
+                                <td id="cedula5"></td>
+                                <td id="alerta5"></td>
+                                <td id="fecha5"></td>
+                                <td id="hora5"></td>
+                            </tr>
+                            <tr class="u4">
+                                <td id="empleado6"></td>
+                                <td id="cedula6"></td>
+                                <td id="alerta6"></td>
+                                <td id="fecha6"></td>
+                                <td id="hora6"></td>
+                            </tr>
+                            <tr class="u4">
+                                <td id="empleado7"></td>
+                                <td id="cedula7"></td>
+                                <td id="alerta7"></td>
+                                <td id="fecha7"></td>
+                                <td id="hora7"></td>
+                            </tr>
+                            <tr class="u4">
+                                <td id="empleado8"></td>
+                                <td id="cedula8"></td>
+                                <td id="alerta8"></td>
+                                <td id="fecha8"></td>
+                                <td id="hora8"></td>
+                            </tr>
+                            <tr class="u4">
+                                <td id="empleado9"></td>
+                                <td id="cedula9"></td>
+                                <td id="alerta9"></td>
+                                <td id="fecha9"></td>
+                                <td id="hora9"></td>
+                            </tr>
+                            <tr class="u4">
+                                <td id="empleado10"></td>
+                                <td id="cedula10"></td>
+                                <td id="alerta10"></td>
+                                <td id="fecha10"></td>
+                                <td id="hora10"></td>
+                            </tr>
+
+                        </tbody>
+                        
+                    </table>
+                    <img src="titulo.JPG" height="300px" width="600px" id="imagen2"  >
+                 </div>
+                <!-- <img src="titulo.JPG" height="300px" width="600px" id="imagen2"  > -->
+           </div>  <!-- final menu 2 -->  
+
+      </div>  <!-- imagen alerta  -->  
+      
+     
+
+      </div>  <!-- cierre de imagen alerta-->  
+      </div>  <!-- end of content -->
+      </div>  <!-- end of wrap div -->
+      
+</body>
+</html>
